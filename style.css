@@ -1,4 +1,9 @@
 body {
     background-color: black;
-    background: url(images/kindajean_@2X.png); 
+    background: url(assets/images/kindajean_@2X.png); 
+}
+
+.btn {
+	background-color: inherit;
+	border: none;
 }
