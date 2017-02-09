@@ -6,4 +6,9 @@ body {
 .btn {
 	background-color: inherit;
 	border: none;
+	color: #ffffff;
+}
+
+#white_text{
+	color: #ffffff;
 }
