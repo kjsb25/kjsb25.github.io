@@ -1,14 +1,18 @@
 body {
     background-color: black;
-    background: url(assets/images/kindajean_@2X.png); 
+    background: url(assets/images/kindajean_@2X_darker.png); 
 }
 
-.btn {
+li .btn {
 	background-color: inherit;
 	border: none;
 	color: #ffffff;
 }
 
-#white_text{
+.jumbotron *{
+	text-align: center;
+}
+
+footer *{
 	color: #ffffff;
 }
