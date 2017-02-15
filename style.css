@@ -1,8 +1,18 @@
 body {
     background-color: black;
-    background: url(images/serenity_wide.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(assets/images/kindajean_@2X_darker.png); 
+}
+
+li .btn {
+	background-color: inherit;
+	border: none;
+	color: #ffffff;
+}
+
+.jumbotron *{
+	text-align: center;
+}
+
+footer *{
+	color: #ffffff;
 }
