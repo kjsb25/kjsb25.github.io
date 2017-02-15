@@ -16,3 +16,7 @@ li .btn {
 footer *{
 	color: #ffffff;
 }
+
+.panel-container{
+	background-color: transparent;
+}
