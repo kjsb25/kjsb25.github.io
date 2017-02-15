@@ -1,120 +1,114 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Keenan Shumard</title>
-
-    <!-- Jquery -->
-    <script src="../lib/js/jquery-3.1.1.min.js"></script>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../lib/css/font-awesome-4.6.3/css/font-awesome.min.css">
-
-    <!-- Bootstrap Social -->
-    <link rel="stylesheet" href="../lib/css/bootstrap-social-gh-pages/bootstrap-social.css">
-
-
-    <!-- Custom stylesheet -->
-    <link href="style.css" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
-
-  </head>
-
-  <body>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  <title>Keenan Shumard</title>
+  <!-- Jquery -->
+  <script src="../lib/js/jquery-3.1.1.min.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../lib/css/font-awesome-4.6.3/css/font-awesome.min.css">
+  <!-- Bootstrap Social -->
+  <link rel="stylesheet" href="../lib/css/bootstrap-social-gh-pages/bootstrap-social.css">
+  <!-- Custom stylesheet -->
+  <link href="style.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+</head>
+<body>
   <div id="navbar"></div>
   <script>
-    $(function(){
-      $("#navbar").load("navbar.html"); 
-    });
-    </script>
-
-    <div class="container">
-
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="center-block text-center">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="well text-center">
-            <h1>Hello, world!</h1>
-            <p>This is a simple, personal website for Keenan Shumard that is currently in development.</p>
-          </div>
-          
-          <div id="dynamic_info">
-            <div class="selection_buttons btn-group btn-group-lg text-center">
-              <button class="btn btn-default" data-toggle="collapse" data-target="#things_ive_made" data-parent="#dynamic_info">Things I've Made</button>
-              <button class="btn btn-default" data-toggle="collapse" data-target="#places_ive_worked" data-parent="#dynamic_info">Places I've Worked</button>
-              <button class="btn btn-default" data-toggle="collapse" data-target="#things_i_know" data-parent="#dynamic_info">Things I Know</button>
-            </div>
-
-            <div class="panel panel-container accordion-group">
-              <!-- Things I've Made -->
-              <div class="collapse" id="things_ive_made">
-                <div class="panel custom_panel">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Online Keep Talking and Nobody Explodes Helper Tool</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-              <!-- Places I've Worked -->
-              <div class="collapse" id="places_ive_worked">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Anheuser Busch-Inbev</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-            <!-- Things I Know -->
-            <div class="collapse" id="things_i_know">
-                <div class="panel custom_panel">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Programming Languages</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+  $(function(){
+  $("#navbar").load("navbar.html");
+  });
+  </script>
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <div class="center-block text-center">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="well text-center col-md-8 col-md-offset-2" id="banner">
+          <h1>Hello, world!</h1>
+          <p>This is a simple, personal website for Keenan Shumard that is eternally in a state of casual development.</p>
         </div>
-      </div><!--/row-->
-
-      <!-- <hr> -->
-
-      <footer>
-        <!-- <p>© 2017 Keenan Shumard</p> -->
-      </footer>
-
+        
+        <div id="dynamic_info">
+          <div class="selection_buttons btn-group btn-group-lg text-center">
+            <button class="btn btn-default" data-toggle="collapse" data-target="#things_ive_made" data-parent="#dynamic_info">Things I've Made</button>
+            <button class="btn btn-default" data-toggle="collapse" data-target="#places_ive_worked" data-parent="#dynamic_info">Places I've Worked</button>
+            <button class="btn btn-default" data-toggle="collapse" data-target="#things_i_know" data-parent="#dynamic_info">Things I Know</button>
+          </div>
+          <div class="panel panel-container accordion-group">
+            <!-- Things I've Made -->
+            <div class="collapse" id="things_ive_made">
+              <div class="panel custom_panel">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><a target="_blank" href="http://keenanshumard.com/KTANE-Bomb-Manual/">Online Keep Talking and Nobody Explodes Tool</a></h3>
+                </div>
+                <div class="panel-body">
+                  This webtool is meant to serve as an online manual for the game <a href="http://www.keeptalkinggame.com/"">"Keep Talking and Nobody Explodes"</a>. Originally created as an exercise in programming solutions to a wide variety of problems, it's provided me insight into how to start, stylize, and maintain a full application.
+                </div>
+              </div>
+            </div>
+            <!-- Places I've Worked -->
+            <div class="collapse" id="places_ive_worked">
+              <div class="panel custom_panel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Systems Engineer Coop at Anheuser-Busch, St. Louis Brewery</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <li>
+                      Managed replacement of over 700 computers for a VMWare virtual workstation
+                      environment
+                    </li>
+                    <li>
+                    Assisted design and maintenance of VMWare virtual environment’s pools and groups</li><li>
+                    Provided daily customer service to brewery employees and responded to production
+                  critical issues</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Things I Know -->
+          <div class="collapse" id="things_i_know">
+            <div class="panel custom_panel">
+              <div class="panel-heading">
+                <h3 class="panel-title">Programming Languages</h3>
+              </div>
+              <div class="panel-body">
+                <ul>
+                  <li>HTML\CSS</li>
+                  <li>JavaScript</li>
+                  <li>C</li>
+                  <li>Java</li>
+                  <li>JSP</li>
+                  <li>PowerShell</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!--/row-->
+    <!-- <hr> -->
+    <footer>
+      <!-- <p>© 2017 Keenan Shumard</p> -->
+    </footer>
     </div><!--/.container-->
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../lib/js/bootstrap.min.js"></script>
-
-  
-
-</body>
+    
+  </body>
