@@ -19,4 +19,16 @@ footer *{
 
 .panel-container{
 	background-color: transparent;
+	padding: 20px;
+}
+
+.custom_panel *{
+	text-align: left;
+
+}
+
+.custom_panel .panel-heading{
+	background-color: #f5f5f5;
+    border-color: #ddd;#ffffff;
+	
 }
