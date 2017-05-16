@@ -9,10 +9,26 @@ li .btn {
 	color: #ffffff;
 }
 
-.jumbotron *{
-	text-align: center;
-}
-
 footer *{
 	color: #ffffff;
+}
+
+.panel-container{
+	background-color: transparent;
+	padding: 20px;
+}
+
+
+.custom_panel *{
+	text-align: left;
+}
+
+.custom_panel .panel-heading{
+	background-color: #9d9d9d;
+    border-color: #101010;
+	
+}
+
+.panel-body a{
+	color: #333;
 }
