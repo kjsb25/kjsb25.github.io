@@ -33,3 +33,8 @@ footer *{
 	color: #333;
 	font-weight: 600;
 }
+
+#pdfFrame{
+	height: 100%;
+	width: 100%;
+}
