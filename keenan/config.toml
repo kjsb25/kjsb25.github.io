@@ -1,0 +1,283 @@
+baseURL = "http://example.org/"
+languageCode = "en"
+title = "Keenan Shumard"
+theme = "hugo-devresume-theme"
+googleAnalytics = "UA-XXXXXXX-Y" #TODO
+
+
+
+
+
+
+[params]
+    author = "Keenan Shumard"
+    description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
+
+
+    primaryColor = "#54B689"
+    textPrimaryColor = "#292929"
+
+
+
+
+    [params.profile]
+        enable = true
+        name = "Keenan Shumard"
+        tagline = "Software Engineer"
+        avatar = "avatar.png"
+
+
+
+
+
+
+
+    [params.contact]
+        enable = true
+        location = "Saint Louis"
+
+
+        [[params.contact.list]]
+        icon = "fas fa-envelope-square"
+        url = "mailto:#"
+        text = "keenan.shumard@gmail.com"
+        [[params.contact.list]]
+        icon = "fas fa-globe"
+        url = "#"
+        text = "www.keenanshumard.com"
+
+
+
+
+
+
+
+    [params.skills]
+        enable = true
+
+        [[params.skills.list]]
+        title = "Python"
+        [[params.skills.list.items]]
+        details = "JavaScript"
+        [[params.skills.list.items]]
+        details = "PHP"
+        [[params.skills.list.items]]
+        details = "SQL"
+        [[params.skills.list.items]]
+        details = "Docker"
+        [[params.skills.list.items]]
+        details = "Object-oriented design"
+        [[params.skills.list.items]]
+        details = "Design and implement database structures"
+        [[params.skills.list.items]]
+        details = "Lead and deliver complex software systems"
+
+        [[params.skills.list]]
+        title = "Professional"
+        [[params.skills.list.items]]
+        details = "Effective communication"
+        [[params.skills.list.items]]
+        details = "Team player"
+        [[params.skills.list.items]]
+        details = "Strong problem solver"
+        [[params.skills.list.items]]
+        details = "Good time management"
+
+
+
+
+    [params.education]
+        enable = true
+
+        [[params.education.list]]
+        degree = "BS in Computer Science"
+        university = "University of Missouri-Columbia"
+        dates = "2017"
+        [[params.education.list]]
+        degree = "BS in Information Technology"
+        university = "University of Missouri-Columbia"
+        dates = "2017"
+
+
+
+
+
+
+
+
+    [params.awards]
+        enable = true
+
+        [[params.awards.list]]
+        name = "Eagle Scout"
+        body = "Boy Scouts of America"
+        date = "2011"
+        [[params.awards.list]]
+        name = "Engineering Achievement Scholarship"
+        date = "2012"
+
+
+
+
+
+
+
+
+    [params.languages]
+        enable = true
+
+        [[params.languages.list]]
+        name = "English"
+        level = "Native"
+
+
+
+
+
+
+
+
+    [params.interests]
+        enable = true
+
+        [[params.interests.list]]
+        name = "Crosswords"
+        [[params.interests.list]]
+        name = "Hiking"
+        [[params.interests.list]]
+        name = "Running"
+        [[params.interests.list]]
+        name = "Travelling"
+
+
+
+
+
+
+
+
+    [params.summary]
+        enable = true
+        text = "Summarise your career here. Donec quam felis, ultricies nec, pellentesque eu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.  Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh."
+
+
+
+
+
+
+
+
+    [params.experience]
+        enable = true
+
+        [[params.experience.list]]
+        title = "Software Developer"
+        dates = "2019-2021"
+        company = "Boeing"
+        details = "insite stuff"
+        [[params.experience.list.items]]
+        details = "Fulfilled customer requests in support of the Training System software development network "
+        [[params.experience.list.items]]
+        details = "Drove independent development of Information Assurance Reconciliation tool that automated manual workloads and allowed easier processing of large batches of information."
+
+        [[params.experience.list]]
+        title = "IT Career Foundation Program"
+        dates = "2017-2019"
+        company = "Boeing"
+        details = "The Information Career Foundation Program (ITCFP) allowed the rapid rotation through different job roles and teams within the IT space, allowing a hands on taste of the daily experience of those roles, and a better understanding of how they all function together. "
+        [[params.experience.list.items]]
+        details = "Lorem ipsum dolor sit amet, consectetuer."
+        [[params.experience.list.items]]
+        details = "Aenean commodo ligula eget dolor."
+        [[params.experience.list.items]]
+        details = "Etiam ultricies nisi vel augue."
+
+        [[params.experience.list]]
+        title = "Software and IT Intern"
+        dates = "2016"
+        company = "Boeing"
+        details = "Internship with Training Sytems IT Support team, managing the maintenance and isolation requirements of an segmented development network."
+        [[params.experience.list.items]]
+        details = "Fulfilled customer requests in support of the Training System software development network "
+        [[params.experience.list.items]]
+        details = "Drove independent development of Information Assurance Reconciliation tool that automated manual workloads and allowed easier processing of large batches of information."
+
+        [[params.experience.list]]
+        title = "Systems Engineer Coop"
+        dates = "2015"
+        company = "Anheuser Busch"
+        details = " "
+        [[params.experience.list.items]]
+        details = "Managed replacement of over 700 computers for a VMWare virtual workstation environment."
+        [[params.experience.list.items]]
+        details = "Assisted design and maintenance of VMWare virtual environment’s pools and groups."
+        [[params.experience.list.items]]
+        details = "Provided daily customer service to brewery employees and responded to production critical issues"
+
+        [[params.experience.list]]
+        title = "Tech Support"
+        dates = "2016 - 2017"
+        company = "University of Missouri IT"
+        details = "Front line tech support for 3 campus universities, supporting both teachers and students with basic troubleshooting, networking, and internal site issues."
+        [[params.experience.list.items]]
+        details = "Assisted users through computer issues ranging from AD account issues to basic computer and application troubleshooting."
+        [[params.experience.list.items]]
+        details = " Provided support through both phone and chat assistance channels"
+
+
+
+
+
+
+
+
+
+
+
+    [params.projects]
+        enable = true
+
+        [[params.projects.list]]
+        title = "Keep Talking and Nobody Explodes Web Helper"
+        meta = "Open Source"
+        tagline = "This webtool is meant to serve as an online manual for the video game Keep Talking and Nobody Explodes. Originally created as an exercise in programming solutions to a wide variety of problems, it provided me insight into how to start, stylize, and maintain a full application."
+
+        [[params.projects.list]]
+        title = "Autonomous RC Car"
+        meta = "Open Source"
+        tagline = "For my Capstone project, Keenan worked with a group to develop an RC car that could drive on bordered tracks independently. It used a neural network to process sample images that we had captured, and was able to successfully navigate several different tracks."
+
+        [[params.projects.list]]
+        title = "HomeLab"
+        meta = "Open Source"
+        tagline = "As a hobby, Keenan enjoys fiddling with old computers and setting them up to do various things within the home. This includes a media server, integrated home automation tools, and many other small projects that can be quickly deployed, tested and evaluated. Combining these various elements has taught elements of networking, virtual machine behavior, docker infrastructure and system administration."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    [params.social]
+        enable = true
+
+        [[params.social.list]]
+        icon = "fab fa-github-square"
+        url = "//github.com/kjsb25"
+        title = "kjsb25"
+        [[params.social.list]]
+        icon = "fab fa-linkedin"
+        url = "//linkedin.com/in/keenanshumard"
+        title = "keenanshumard"
+        [[params.social.list]]
+        icon = "fab fa-instagram"
+        url = "//instagram.com/keenan.shumard"
+        title = "@keenan.shumard"
