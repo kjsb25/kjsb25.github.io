@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://www.keenanshumard.com/"
 languageCode = "en"
 title = "Keenan Shumard"
 theme = "hugo-devresume-theme"
@@ -24,12 +24,7 @@ googleAnalytics = "UA-XXXXXXX-Y" #TODO
         enable = true
         name = "Keenan Shumard"
         tagline = "Software Engineer"
-        avatar = "avatar.png"
-
-
-
-
-
+        avatar = "profpic.jpg"
 
 
     [params.contact]
