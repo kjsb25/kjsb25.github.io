@@ -1,4 +1,4 @@
-baseURL = "http://www.keenanshumard.com/"
+baseURL = "https://www.keenanshumard.com/"
 languageCode = "en"
 title = "Keenan Shumard"
 theme = "hugo-devresume-theme"
