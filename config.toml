@@ -1,0 +1,28 @@
+languageCode = "en-us"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+enableEmoji = true
+
+theme = "almeida-cv"
+disableKinds = ["page", "section", "taxonomy", "term", "RSS", "sitemap"]
+
+baseURL = "https://keenanshumard.com/"
+title = "Keenan Shumard - CV"
+
+[params]
+enableMetaTags = true
+colorLight = "#fff"
+colorDark = "#444"
+colorPageBackground = "#e8e8e8"
+colorPrimary = "#2a6496"
+colorSecondary = "#888"
+colorIconPrimary = "#fff"
+colorIconBackground = "#2a6496"
+colorRightColumnBackground = "#f5f5f5"
+colorRightColumnHeadingText = "#444"
+colorRightColumnBodyText = "#555"
+colorRightColumnIconPrimary = "#fff"
+colorRightColumnIconBackground = "#2a6496"
+pages = 1
+swapColumns = false
+footerNote = "Keenan Shumard   |   keenanshumard.com"

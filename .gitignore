@@ -1,2 +1,5 @@
 sftp-config.json
 *.exe
+public/
+resources/
+.hugo_build.lock
