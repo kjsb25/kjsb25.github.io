@@ -1,0 +1,102 @@
+BasicInfo:
+  FirstName: Keenan
+  LastName: Shumard
+  Contacts:
+    - Icon: fas fa-globe
+      Info: <a class="contact__link" href="https://keenanshumard.com" target="_blank">keenanshumard.com</a>
+    - Icon: fab fa-github
+      Info: <a class="contact__link" href="https://github.com/kjsb25" target="_blank">github.com/kjsb25</a>
+    - Icon: fab fa-linkedin
+      Info: <a class="contact__link" href="https://www.linkedin.com/in/keenanshumard" target="_blank">linkedin.com/in/keenanshumard</a>
+
+Profile: IT professional with experience across data migration, DevOps tooling, and robotic process automation. Background in systems engineering, software development, and IT support. Passionate about building tools, tinkering with homelabs, and solving problems through technology.
+
+Experience:
+  - Employer: Boeing
+    Place: ""
+    Positions:
+      - Title: ITCFP Participant
+        Date: ""
+        Details:
+          - Information Technology Career Foundation Program
+          - Cycled through different positions within IT to gain diverse knowledge and grow as a young professional
+          - "Data Migration Team: Ensured data validity and consistency between versions of proprietary software during upgrades"
+          - "Global Integrated Development Environment Team: Provided and grew DevOps tools across the enterprise"
+          - "Robotics Process Automation Team: Used Blue Prism to provide robots to eliminate recurring and procedural tasks from many areas of the enterprise"
+        Badges: ['Blue Prism', 'DevOps', 'Data Migration', 'RPA']
+      - Title: TSGS-IT Intern
+        Date: ""
+        Details:
+          - Fulfilled customer requests in support of the Training System software development network
+          - Drove development of Information Assurance Reconciliation tool that improved employee workflow and saved significant time
+        Badges: ['IT Support', 'Software Development']
+  - Employer: Anheuser-Busch, St. Louis Brewery
+    Place: ""
+    Positions:
+      - Title: Systems Engineer Co-op
+        Date: ""
+        Details:
+          - Managed replacement of over 700 computers for a VMware virtual workstation environment
+          - Assisted design and maintenance of VMware virtual environment's pools and groups
+          - Provided daily customer service to brewery employees and responded to production-critical issues
+        Badges: ['VMware', 'Systems Engineering', 'IT Support']
+  - Employer: University Division of IT
+    Place: ""
+    Positions:
+      - Title: Tech Support Consultant
+        Date: ""
+        Details:
+          - Assisted users through computer issues ranging from AD account issues to basic computer and application troubleshooting
+          - Provided support through both phone and chat assistance channels
+        Badges: ['Active Directory', 'Troubleshooting', 'Customer Service']
+
+Projects:
+  - Name: Online Keep Talking and Nobody Explodes Tool
+    Description: A webtool serving as an online manual for the game "Keep Talking and Nobody Explodes". Originally created as an exercise in programming solutions to a wide variety of problems, providing insight into how to start, stylize, and maintain a full application.
+    Links:
+      - Label: GitHub
+        URL: https://github.com/kjsb25/KTANE-Bomb-Manual
+      - Label: Live Demo
+        URL: https://keenanshumard.com/KTANE-Bomb-Manual/
+  - Name: Autonomous RC Car
+    Description: Capstone project developing an RC car that could drive on bordered tracks independently. Used a neural network to process sample images and successfully navigate several different tracks.
+    Links:
+      - Label: GitHub
+        URL: https://github.com/qdm8t2/capstone-autonomous-car
+      - Label: Demo Video
+        URL: https://youtu.be/etBE4_Ajt-w
+  - Name: HomeLab
+    Description: Personal hobby project involving old computers set up to run various home services including a Plex server, Home Assistant, and many other elements. Combines networking, VM management, and system administration skills.
+
+Education: []
+
+Skills:
+  - Family: Programming
+    Items:
+      - PowerShell
+      - Python
+      - HTML
+      - JavaScript
+      - C
+      - Java
+      - JSP
+      - PL/SQL
+  - Family: Tools
+    Items:
+      - Git
+      - Sublime
+      - Eclipse
+      - NetBeans
+      - Unity
+      - Toad for Oracle
+      - Blue Prism
+      - VMware
+
+Interests:
+  - HomeLab & Self-Hosting
+  - Networking & System Administration
+  - Game Modding & Development
+
+Diplomas: []
+
+Languages: []
