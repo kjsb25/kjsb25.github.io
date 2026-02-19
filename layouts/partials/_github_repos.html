@@ -1,0 +1,60 @@
+{{ with .Site.Data.github_repos }}
+<style>
+  .experience__badge--link {
+    background-color: transparent;
+    color: {{ $.Site.Params.colorPrimary }};
+    border: 1.5px solid {{ $.Site.Params.colorPrimary }};
+  }
+  .experience__badge--link a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>
+<div id="github-repos" class="section">
+    <div class="section__heading">
+        <h2 class="section__title">GitHub Repositories</h2>
+    </div>
+    <div class="section__content">
+        {{ range . }}
+            <div class="education__item">
+                <h3 class="education__title">
+                    <a href="{{ .html_url }}" target="_blank" style="color: inherit; text-decoration: none;">{{ .name }}</a>
+                </h3>
+                {{ if .description }}
+                <div class="education__description">{{ .description }}</div>
+                {{ end }}
+                {{ if .languages }}
+                {{ $parts := slice }}
+                {{ range .languages }}{{ $parts = $parts | append (printf "%s %g%%" .name .percent) }}{{ end }}
+                <div class="education__description" style="font-size: 0.85em; color: #888; margin-top: 4px;">
+                    {{ delimit $parts " · " }}
+                </div>
+                {{ end }}
+                <div class="experience__badges">
+                    <ul>
+                        {{/* Tech tags: filled primary pill */}}
+                        {{ range .frameworks }}
+                        <li class="experience__badge">{{ . }}</li>
+                        {{ end }}
+                        {{ range .topics }}
+                        <li class="experience__badge">{{ . }}</li>
+                        {{ end }}
+                        {{ if and .license (ne .license "NOASSERTION") }}
+                        <li class="experience__badge">{{ .license }}</li>
+                        {{ end }}
+                        {{/* Links: outlined pill */}}
+                        <li class="experience__badge experience__badge--link">
+                            <a href="{{ .html_url }}" target="_blank">GitHub</a>
+                        </li>
+                        {{ if .homepage }}
+                        <li class="experience__badge experience__badge--link">
+                            <a href="{{ .homepage }}" target="_blank">Demo</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

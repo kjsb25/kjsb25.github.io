@@ -3,3 +3,4 @@ sftp-config.json
 public/
 resources/
 .hugo_build.lock
+data/github_repos.json
