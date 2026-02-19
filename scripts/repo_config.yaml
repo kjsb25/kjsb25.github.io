@@ -1,0 +1,7 @@
+# Repos to show on the site (full tech-stack enrichment fetched for these).
+# Move a name from `exclude` to `include` to display it.
+include:
+  - KTANE-Bomb-Manual
+
+# Repos discovered but not shown. Move entries to `include` to display them.
+exclude:
