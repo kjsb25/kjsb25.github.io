@@ -39,7 +39,8 @@
                         {{ range .topics }}
                         <li class="experience__badge">{{ . }}</li>
                         {{ end }}
-                        {{ if and .license (ne .license "NOASSERTION") }}
+                        {{/* Only show unusual/notable licenses — skip MIT and other ubiquitous ones */}}
+                        {{ if and .license (ne .license "NOASSERTION") (ne .license "MIT") (ne .license "Apache-2.0") (ne .license "ISC") (ne .license "BSD-2-Clause") (ne .license "BSD-3-Clause") }}
                         <li class="experience__badge">{{ .license }}</li>
                         {{ end }}
                         {{/* Links: outlined pill */}}
