@@ -13,7 +13,7 @@ Profile: Full Stack Software Developer with nine years of progressively responsi
 
 Experience:
   - Employer: Mindbank Consulting Group
-    Place: ""
+    Place: "Fort Collins, CO"
     Positions:
       - Title: Consultant to US Fish & Wildlife Service
         Date: "Jan 2026 - Present"
@@ -22,7 +22,7 @@ Experience:
           - Added to onboarding and build process for a reproducible experience across both local and deployed environments
         Badges: ['Java', 'Full Stack', 'Solr', 'Search', 'DevOps']
   - Employer: The Boeing Company
-    Place: ""
+    Place: "St. Louis, MO"
     Positions:
       - Title: Software Developer
         Date: "Mar 2024 - Dec 2025"
@@ -35,7 +35,7 @@ Experience:
           - Maintain systems that support production line operations, ensuring seamless manufacturing processes
         Badges: ['Java', 'Spring', 'Hibernate', 'Tomcat', 'SQL', 'Splunk', 'OracleDB', 'CI/CD', 'Agile']
   - Employer: Slalom Consulting
-    Place: ""
+    Place: "St. Louis, MO"
     Positions:
       - Title: Software Consultant
         Date: "Jan 2022 - Jul 2023"
@@ -45,7 +45,7 @@ Experience:
           - Enhanced Java-based fraud filtering system in major financial institution, focusing on high throughput and reliability
         Badges: ['AWS', 'React', 'Terraform', 'Lambda', 'Java', 'Docker', 'CI/CD', 'Agile']
   - Employer: The Boeing Company
-    Place: ""
+    Place: "St. Louis, MO"
     Positions:
       - Title: Software Developer
         Date: "Jun 2019 - Jan 2022"
@@ -57,7 +57,7 @@ Experience:
           - Led the team in synthesizing and interpreting user feedback to solve the right problems
         Badges: ['Java', 'Spring', 'Agile', 'UI/UX', 'REST API', 'Git', 'Jenkins', 'DevOps']
   - Employer: The Boeing Company
-    Place: ""
+    Place: "St. Louis, MO"
     Positions:
       - Title: Technologist - IT Career Foundation Program
         Date: "Jun 2017 - Jun 2019"
@@ -68,7 +68,7 @@ Experience:
           - "Robotics Process Automation: Investigated time-intensive, repetitive tasks across functions and alleviated pain points and efficiency bottlenecks through automated workflows"
         Badges: ['PL/SQL', 'PowerShell', 'GitLab', 'Blue Prism', 'DevOps', 'Data Migration', 'RPA']
   - Employer: The Boeing Company
-    Place: ""
+    Place: "St. Louis, MO"
     Positions:
       - Title: Training Systems IT Intern
         Date: "Jun 2016 - Aug 2016"
@@ -77,7 +77,7 @@ Experience:
           - Drove development of Information Assurance Reconciliation tool that would save labor hours and improve workflow when completed
         Badges: ['IT Support', 'Software Development']
   - Employer: Anheuser-Busch
-    Place: "St. Louis Brewery"
+    Place: "St. Louis, MO"
     Positions:
       - Title: Systems Engineer Co-op
         Date: "Jan 2015 - Aug 2015"
@@ -87,7 +87,7 @@ Experience:
           - Provided daily customer service to brewery employees and responded to production-critical issues
         Badges: ['VMware', 'Systems Engineering', 'IT Support']
   - Employer: University of Missouri, Division of IT
-    Place: ""
+    Place: "Columbia, MO"
     Positions:
       - Title: Technical Support Consultant
         Date: "Oct 2013 - Apr 2016"
