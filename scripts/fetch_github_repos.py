@@ -40,6 +40,99 @@ OUTPUT_FILE = REPO_ROOT / "data" / "github_repos.json"
 
 # Map from filenames/patterns found in repo tree to framework/tool labels.
 # Checked in order; first match wins per label.
+# Map from Python import names to marketable tech labels.
+# Keys are top-level module names as they appear in `import X` or `from X import ...`.
+# None = suppress (don't surface as a tag).
+PYTHON_IMPORT_LABELS = {
+    # ── ML / Data Science ─────────────────────────────────────────────────
+    "sklearn":          "scikit-learn",
+    "torch":            "PyTorch",
+    "tensorflow":       "TensorFlow",
+    "keras":            "Keras",
+    "xgboost":          "XGBoost",
+    "lightgbm":         "LightGBM",
+    "catboost":         "CatBoost",
+    "transformers":     "Hugging Face",
+    "diffusers":        "Hugging Face",
+    # ── Numerical / Scientific ────────────────────────────────────────────
+    "numpy":            "NumPy",
+    "np":               None,               # alias — numpy is the canonical key
+    "scipy":            "SciPy",
+    "pandas":           "pandas",
+    "polars":           "Polars",
+    "sympy":            "SymPy",
+    # ── Computer Vision ───────────────────────────────────────────────────
+    "cv2":              "OpenCV",
+    "PIL":              "Pillow",
+    "skimage":          "scikit-image",
+    "imageio":          None,               # utility, not marketable alone
+    # ── Visualisation ─────────────────────────────────────────────────────
+    "matplotlib":       "Matplotlib",
+    "pylab":            None,               # matplotlib alias
+    "seaborn":          "Seaborn",
+    "plotly":           "Plotly",
+    "bokeh":            "Bokeh",
+    # ── Web frameworks ────────────────────────────────────────────────────
+    "flask":            "Flask",
+    "fastapi":          "FastAPI",
+    "django":           "Django",
+    "aiohttp":          "aiohttp",
+    "tornado":          "Tornado",
+    "starlette":        "Starlette",
+    # ── Databases / ORM ───────────────────────────────────────────────────
+    "sqlalchemy":       "SQLAlchemy",
+    "pymongo":          "MongoDB",
+    "redis":            "Redis",
+    "psycopg2":         "PostgreSQL",
+    "pymysql":          "MySQL",
+    "motor":            "MongoDB",
+    # ── Async / Networking ────────────────────────────────────────────────
+    "asyncio":          None,               # stdlib
+    "requests":         None,               # too generic
+    "httpx":            None,               # too generic
+    "websockets":       "WebSockets",
+    # ── Hardware / IoT ────────────────────────────────────────────────────
+    "picamera":         "Raspberry Pi Camera",
+    "RPi":              "Raspberry Pi",
+    "smbus":            None,
+    "serial":           None,
+    # ── Game / Simulation ─────────────────────────────────────────────────
+    "pygame":           "Pygame",
+    # ── Cloud / Infrastructure ────────────────────────────────────────────
+    "boto3":            "AWS SDK",
+    "google":           None,               # too broad
+    "azure":            "Azure SDK",
+    "openai":           "OpenAI SDK",
+    "anthropic":        "Anthropic SDK",
+    # ── Automation / Testing ──────────────────────────────────────────────
+    "selenium":         "Selenium",
+    "playwright":       "Playwright",
+    "pytest":           None,               # test tooling, not marketable
+    # ── Suppress stdlib and other noise ───────────────────────────────────
+    "os":               None,
+    "sys":              None,
+    "re":               None,
+    "json":             None,
+    "math":             None,
+    "time":             None,
+    "datetime":         None,
+    "io":               None,
+    "glob":             None,
+    "pathlib":          None,
+    "pickle":           None,
+    "threading":        None,
+    "subprocess":       None,
+    "logging":          None,
+    "typing":           None,
+    "collections":      None,
+    "itertools":        None,
+    "functools":        None,
+    "random":           None,
+    "copy":             None,
+    "abc":              None,
+    "tty":              None,
+}
+
 FRAMEWORK_INDICATORS = [
     # JS frameworks (more specific before generic)
     ("next.config.js",       "Next.js"),
@@ -336,6 +429,60 @@ def fetch_file_paths(name, default_branch, headers):
     return [e["path"] for e in data.get("tree", []) if e.get("type") == "blob"]
 
 
+def fetch_python_imports(name, default_branch, file_paths, headers):
+    """
+    Fetch up to MAX_PY_FILES Python files from the repo root (depth-1 .py files)
+    and extract top-level import names.  Returns a set of module name strings.
+    Uses raw.githubusercontent.com to avoid contents-API auth issues with
+    cross-repo tokens in GitHub Actions, and to avoid burning API rate limit.
+    """
+    MAX_PY_FILES = 10
+    # Only consider .py files directly in the repo root (no subdir vendor code)
+    root_py = [p for p in file_paths if p.endswith(".py") and "/" not in p][:MAX_PY_FILES]
+    if not root_py:
+        return set()
+
+    import_names = set()
+    for path in root_py:
+        url = f"https://raw.githubusercontent.com/{USERNAME}/{name}/{default_branch}/{path}"
+        req = urllib.request.Request(url, headers={"User-Agent": f"{USERNAME}-site-builder"})
+        try:
+            with urllib.request.urlopen(req) as resp:
+                content = resp.read().decode("utf-8", errors="replace")
+        except Exception:
+            continue
+        for line in content.splitlines():
+            line = line.strip()
+            if line.startswith("import "):
+                # "import foo, bar as baz" -> ["foo", "bar"]
+                for part in line[7:].split(","):
+                    mod = part.strip().split()[0].split(".")[0]
+                    if mod:
+                        import_names.add(mod)
+            elif line.startswith("from "):
+                # "from foo.bar import ..." -> "foo"
+                mod = line[5:].split()[0].split(".")[0]
+                if mod:
+                    import_names.add(mod)
+    return import_names
+
+
+def extract_python_tech(import_names):
+    """
+    Given a set of top-level module names, return deduplicated marketable labels.
+    """
+    seen_labels, result = set(), []
+    for mod in import_names:
+        if mod not in PYTHON_IMPORT_LABELS:
+            continue
+        label = PYTHON_IMPORT_LABELS[mod]
+        if label is None or label in seen_labels:
+            continue
+        result.append(label)
+        seen_labels.add(label)
+    return result
+
+
 def fetch_package_json(name, default_branch, headers):
     """
     Fetch and decode package.json from the repo root.
@@ -386,16 +533,18 @@ def extract_npm_tech(pkg_json):
 # ---------------------------------------------------------------------------
 
 def detect_frameworks(file_paths):
-    basenames = {Path(p).name for p in file_paths}
+    # Root-level paths only (no vendor/subdir noise for packaging indicators).
+    root_paths = [p for p in file_paths if "/" not in p]
+    root_basenames = {Path(p).name for p in root_paths}
     detected, seen = [], set()
     for indicator, label in FRAMEWORK_INDICATORS:
         if label in seen:
             continue
         if indicator.startswith("."):
-            if any(p.endswith(indicator) for p in file_paths):
+            if any(p.endswith(indicator) for p in root_paths):
                 detected.append(label)
                 seen.add(label)
-        elif indicator in basenames:
+        elif indicator in root_basenames:
             detected.append(label)
             seen.add(label)
     return detected
@@ -472,9 +621,24 @@ def main():
 
         frameworks = detect_frameworks(file_paths)
 
+        # If the repo is primarily Python, scan imports for popular library labels.
+        basenames = {Path(p).name for p in file_paths}
+        # base["language"] can be null for repos GitHub hasn't classified yet;
+        # fall back to the top language from our own byte-count breakdown.
+        primary_lang = base.get("language") or (max(lang_bytes, key=lang_bytes.get) if lang_bytes else "")
+        if primary_lang == "Python":
+            import_names = fetch_python_imports(name, default_branch, file_paths, headers)
+            if import_names:
+                print(f"  Python imports detected: {sorted(import_names)}")
+            py_tech = extract_python_tech(import_names)
+            existing = set(frameworks)
+            for label in py_tech:
+                if label not in existing:
+                    frameworks.append(label)
+                    existing.add(label)
+
         # If there's a package.json, enrich with marketable npm tech labels.
         # Merge with file-tree detection, deduplicating by label.
-        basenames = {Path(p).name for p in file_paths}
         if "package.json" in basenames:
             pkg_json = fetch_package_json(name, default_branch, headers)
             npm_tech = extract_npm_tech(pkg_json)
