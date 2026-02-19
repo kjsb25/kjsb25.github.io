@@ -3,7 +3,7 @@
 Fetch public GitHub repositories for kjsb25 and write to data/github_repos.json.
 
 On every run:
-  - All public non-fork repos are discovered from the GitHub API.
+  - All public repos are discovered from the GitHub API.
   - Repos already listed under `include` in repo_config.yaml are shown on
     the site (with full tech-stack enrichment).
   - Repos already listed under `exclude` are skipped silently.
@@ -301,7 +301,7 @@ def api_get(url, headers):
 
 
 def fetch_all_public_repos(headers):
-    """Fetch all public non-fork repos for USERNAME, paginated."""
+    """Fetch all public repos for USERNAME, paginated."""
     repos = []
     page = 1
     while True:
@@ -316,7 +316,7 @@ def fetch_all_public_repos(headers):
         if len(batch) < 100:
             break
         page += 1
-    return [r for r in repos if not r.get("fork") and not r.get("archived")]
+    return [r for r in repos if not r.get("archived")]
 
 
 def fetch_languages(name, headers):
@@ -420,12 +420,12 @@ def language_breakdown(lang_bytes):
 def main():
     headers = make_headers()
 
-    # 1. Discover all current public non-fork repos
+    # 1. Discover all current public repos
     print("Fetching all public repos from GitHub API...")
     all_repos = fetch_all_public_repos(headers)
     all_names = {r["name"] for r in all_repos}
     repo_map = {r["name"]: r for r in all_repos}
-    print(f"Found {len(all_names)} public non-fork repos")
+    print(f"Found {len(all_names)} public repos")
 
     # 2. Load existing config
     include, exclude = load_config()

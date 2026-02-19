@@ -2,6 +2,36 @@
 # Move a name from `exclude` to `include` to display it.
 include:
   - KTANE-Bomb-Manual
+  - capstone-autonomous-car
+  - movienight
 
 # Repos discovered but not shown. Move entries to `include` to display them.
 exclude:
+  - -Murica-Simulator
+  - AI-HW
+  - Advanced-React-wesbos
+  - Jeopardy
+  - MizzouSENG
+  - Pomodoro-Countdown
+  - Retail-Points-Program-Frontend
+  - RollMe21
+  - Spelling-Bee-Twitch
+  - Spelling-Bee-Twitch-Extension
+  - Template-Files
+  - advent-of-code
+  - hackmizzou
+  - home-assistant
+  - hugoPersonal
+  - jtoggl
+  - kjsb25.github.io
+  - life
+  - movie-search
+  - mygithubpage
+  - personal-website
+  - ror-webapp
+  - simple-samples
+  - tasker-toggl
+  - toggl-box
+  - toggl_api_docs
+  - underthebar
+  - usfw-dag
