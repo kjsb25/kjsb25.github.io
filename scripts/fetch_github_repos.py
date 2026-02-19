@@ -533,16 +533,18 @@ def extract_npm_tech(pkg_json):
 # ---------------------------------------------------------------------------
 
 def detect_frameworks(file_paths):
-    basenames = {Path(p).name for p in file_paths}
+    # Root-level paths only (no vendor/subdir noise for packaging indicators).
+    root_paths = [p for p in file_paths if "/" not in p]
+    root_basenames = {Path(p).name for p in root_paths}
     detected, seen = [], set()
     for indicator, label in FRAMEWORK_INDICATORS:
         if label in seen:
             continue
         if indicator.startswith("."):
-            if any(p.endswith(indicator) for p in file_paths):
+            if any(p.endswith(indicator) for p in root_paths):
                 detected.append(label)
                 seen.add(label)
-        elif indicator in basenames:
+        elif indicator in root_basenames:
             detected.append(label)
             seen.add(label)
     return detected
@@ -621,7 +623,9 @@ def main():
 
         # If the repo is primarily Python, scan imports for popular library labels.
         basenames = {Path(p).name for p in file_paths}
-        primary_lang = base.get("language") or ""
+        # base["language"] can be null for repos GitHub hasn't classified yet;
+        # fall back to the top language from our own byte-count breakdown.
+        primary_lang = base.get("language") or (max(lang_bytes, key=lang_bytes.get) if lang_bytes else "")
         if primary_lang == "Python":
             import_names = fetch_python_imports(name, default_branch, file_paths, headers)
             if import_names:
