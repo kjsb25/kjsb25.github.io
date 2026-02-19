@@ -94,25 +94,6 @@ Experience:
         Details:
           - Assisted users through computer issues ranging from account issues to basic computer and application troubleshooting
         Badges: ['Active Directory', 'Troubleshooting', 'Customer Service']
-
-Projects:
-  - Name: Online Keep Talking and Nobody Explodes Tool
-    Description: A webtool serving as an online manual for the game "Keep Talking and Nobody Explodes". Originally created as an exercise in programming solutions to a wide variety of problems, providing insight into how to start, stylize, and maintain a full application.
-    Links:
-      - Label: GitHub
-        URL: https://github.com/kjsb25/KTANE-Bomb-Manual
-      - Label: Live Demo
-        URL: https://keenanshumard.com/KTANE-Bomb-Manual/
-  - Name: Autonomous RC Car
-    Description: Capstone project developing an RC car that could drive on bordered tracks independently. Used a neural network to process sample images and successfully navigate several different tracks.
-    Links:
-      - Label: GitHub
-        URL: https://github.com/qdm8t2/capstone-autonomous-car
-      - Label: Demo Video
-        URL: https://youtu.be/etBE4_Ajt-w
-  - Name: HomeLab
-    Description: Personal hobby project involving old computers set up to run various home services including a Plex server, Home Assistant, and many other elements. Combines networking, VM management, and system administration skills.
-
 Education:
   - Course: BS, Computer Science
     Place: University of Missouri-Columbia
