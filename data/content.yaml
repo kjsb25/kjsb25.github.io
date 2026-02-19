@@ -9,45 +9,90 @@ BasicInfo:
     - Icon: fab fa-linkedin
       Info: <a class="contact__link" href="https://www.linkedin.com/in/keenanshumard" target="_blank">linkedin.com/in/keenanshumard</a>
 
-Profile: IT professional with experience across data migration, DevOps tooling, and robotic process automation. Background in systems engineering, software development, and IT support. Passionate about building tools, tinkering with homelabs, and solving problems through technology.
+Profile: Full Stack Software Developer with nine years of progressively responsible experience using Java (Spring, Hibernate, Tomcat), React, and AWS. Background spans design and delivery of mission-critical systems, cloud infrastructure, application monitoring, CI/CD, and data migration across aerospace, DOD, financial services, insurance, and manufacturing industries.
 
 Experience:
-  - Employer: Boeing
+  - Employer: Mindbank Consulting Group
     Place: ""
     Positions:
-      - Title: ITCFP Participant
-        Date: ""
+      - Title: Software Consultant to US Fish & Wildlife Service
+        Date: "Jan 2026 - Present"
         Details:
-          - Information Technology Career Foundation Program
-          - Cycled through different positions within IT to gain diverse knowledge and grow as a young professional
-          - "Data Migration Team: Ensured data validity and consistency between versions of proprietary software during upgrades"
-          - "Global Integrated Development Environment Team: Provided and grew DevOps tools across the enterprise"
-          - "Robotics Process Automation Team: Used Blue Prism to provide robots to eliminate recurring and procedural tasks from many areas of the enterprise"
-        Badges: ['Blue Prism', 'DevOps', 'Data Migration', 'RPA']
-      - Title: TSGS-IT Intern
-        Date: ""
-        Details:
-          - Fulfilled customer requests in support of the Training System software development network
-          - Drove development of Information Assurance Reconciliation tool that improved employee workflow and saved significant time
-        Badges: ['IT Support', 'Software Development']
-  - Employer: Anheuser-Busch, St. Louis Brewery
+          - Improved search user experience for customers with many ongoing projects
+          - Added to onboarding and build process for a reproducible experience across both local and deployed environments
+        Badges: ['Java', 'Full Stack', 'Solr', 'Search', 'DevOps']
+  - Employer: The Boeing Company
     Place: ""
+    Positions:
+      - Title: Software Developer
+        Date: "Mar 2024 - Dec 2025"
+        Details:
+          - Develop and maintain mission-critical systems supporting complex production processes utilizing Java, Hibernate, Spring, Tomcat, and SQL to deliver scalable and efficient software solutions
+          - Implement and manage robust, auditable record-keeping systems for multi-variant construction processes
+          - Enhance traceability and compliance across production lines
+          - Designed and integrated extensive logging framework across 10+ applications
+          - Leveraged Splunk for centralized monitoring, increasing system reliability and reducing issue resolution time
+          - Maintain systems that support production line operations, ensuring seamless manufacturing processes
+        Badges: ['Java', 'Spring', 'Hibernate', 'Tomcat', 'SQL', 'Splunk', 'OracleDB', 'CI/CD', 'Agile']
+  - Employer: Slalom Consulting
+    Place: ""
+    Positions:
+      - Title: Software Consultant
+        Date: "Jan 2022 - Jul 2023"
+        Details:
+          - Consultant to several corporations in the financial and insurance industries using technology to solve problems and drive progress
+          - Created app from the ground up to track and streamline insurance claims; built on AWS using React, Terraform, and Lambdas
+          - Enhanced Java-based fraud filtering system in major financial institution, focusing on high throughput and reliability
+        Badges: ['AWS', 'React', 'Terraform', 'Lambda', 'Java', 'Docker', 'CI/CD', 'Agile']
+  - Employer: The Boeing Company
+    Place: ""
+    Positions:
+      - Title: Software Developer
+        Date: "Jun 2019 - Jan 2022"
+        Details:
+          - Developed an internal social network enabling dynamic knowledge management across the enterprise
+          - Drove full UI overhaul of Java web application with a focus on increasing user-centricity, including intuitive design, integration with other Boeing applications, and mobile engagement
+          - Championed successful Agile transformation, enabling increased collective ownership of the product, collaboration, and empathy within the team
+          - Migrated and refactored video infrastructure to comply with code standards, increase reliability, and allow for easier growth into more mature infrastructures
+          - Led the team in synthesizing and interpreting user feedback to solve the right problems
+        Badges: ['Java', 'Spring', 'Agile', 'UI/UX', 'REST API', 'Git', 'Jenkins', 'DevOps']
+  - Employer: The Boeing Company
+    Place: ""
+    Positions:
+      - Title: Technologist - IT Career Foundation Program
+        Date: "Jun 2017 - Jun 2019"
+        Details:
+          - Participated in a high-potential rotational program for technical and leadership development
+          - "Data Migration Administrator: Created tools and processes to translate production critical data sets for system upgrades, utilizing PL/SQL and PowerShell"
+          - "DevOps Environment Analyst: Implemented GitLab version-controlled documentation to enable tool accessibility across the organization"
+          - "Robotics Process Automation: Investigated time-intensive, repetitive tasks across functions and alleviated pain points and efficiency bottlenecks through automated workflows"
+        Badges: ['PL/SQL', 'PowerShell', 'GitLab', 'Blue Prism', 'DevOps', 'Data Migration', 'RPA']
+  - Employer: The Boeing Company
+    Place: ""
+    Positions:
+      - Title: Training Systems and Government Services IT Intern
+        Date: "Jun 2016 - Aug 2016"
+        Details:
+          - Fulfilled customer requests in support of the TSGS software development network
+          - Drove development of Information Assurance Reconciliation tool that would save labor hours and improve workflow when completed
+        Badges: ['IT Support', 'Software Development']
+  - Employer: Anheuser-Busch
+    Place: "St. Louis Brewery"
     Positions:
       - Title: Systems Engineer Co-op
-        Date: ""
+        Date: "Jan 2015 - Aug 2015"
         Details:
           - Managed replacement of over 700 computers for a VMware virtual workstation environment
           - Assisted design and maintenance of VMware virtual environment's pools and groups
           - Provided daily customer service to brewery employees and responded to production-critical issues
         Badges: ['VMware', 'Systems Engineering', 'IT Support']
-  - Employer: University Division of IT
+  - Employer: University of Missouri, Division of IT
     Place: ""
     Positions:
-      - Title: Tech Support Consultant
-        Date: ""
+      - Title: Technical Support Consultant
+        Date: "Oct 2013 - Apr 2016"
         Details:
-          - Assisted users through computer issues ranging from AD account issues to basic computer and application troubleshooting
-          - Provided support through both phone and chat assistance channels
+          - Assisted users through computer issues ranging from account issues to basic computer and application troubleshooting
         Badges: ['Active Directory', 'Troubleshooting', 'Customer Service']
 
 Projects:
@@ -68,27 +113,43 @@ Projects:
   - Name: HomeLab
     Description: Personal hobby project involving old computers set up to run various home services including a Plex server, Home Assistant, and many other elements. Combines networking, VM management, and system administration skills.
 
-Education: []
+Education:
+  - Course: BS, Computer Science
+    Place: University of Missouri-Columbia
+    Date: "June 2017"
+    Details: ""
+  - Course: BS, Information Technology
+    Place: University of Missouri-Columbia
+    Date: "June 2017"
+    Details: ""
 
 Skills:
   - Family: Programming
     Items:
-      - PowerShell
+      - Java (Spring)
+      - React
       - Python
-      - HTML
-      - JavaScript
-      - C
-      - Java
-      - JSP
+      - SQL
       - PL/SQL
-  - Family: Tools
+      - HTML/JS
+      - C++
+      - PowerShell
+  - Family: Cloud & Infrastructure
     Items:
+      - AWS
+      - Terraform
+      - Docker
+      - Jenkins
       - Git
-      - Sublime
-      - Eclipse
-      - NetBeans
-      - Unity
-      - Toad for Oracle
+      - Splunk
+  - Family: Tools & Platforms
+    Items:
+      - Jira
+      - TFS/ADO
+      - Hibernate
+      - OracleDB
+      - Tomcat
+      - Solr
       - Blue Prism
       - VMware
 
@@ -97,6 +158,8 @@ Interests:
   - Networking & System Administration
   - Game Modding & Development
 
-Diplomas: []
+Diplomas:
+  - BS, Computer Science - University of Missouri-Columbia (2017)
+  - BS, Information Technology - University of Missouri-Columbia (2017)
 
 Languages: []
