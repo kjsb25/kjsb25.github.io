@@ -1,5 +1,7 @@
-# Repos to include in the auto-generated GitHub Repositories section.
-# Add repo names (not full URLs) one per line.
-# Only public, non-fork repos will be shown regardless.
+# Repos to show on the site (full tech-stack enrichment fetched for these).
+# Move a name from `exclude` to `include` to display it.
 include:
   - KTANE-Bomb-Manual
+
+# Repos discovered but not shown. Move entries to `include` to display them.
+exclude:
