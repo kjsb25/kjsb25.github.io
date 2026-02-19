@@ -16,6 +16,7 @@ For each included repo, fetches:
   - Base metadata (description, homepage, stars, topics, license, etc.)
   - Full language breakdown with byte counts -> percentages
   - Recursive file tree for framework/tech-stack detection
+  - package.json (if present) for marketable npm dependency labels
 
 Usage:
     python scripts/fetch_github_repos.py
@@ -24,6 +25,7 @@ Environment variables:
     GITHUB_TOKEN  Optional. Raises rate limit from 60 to 5000 req/hr.
 """
 
+import base64
 import json
 import os
 import urllib.error
@@ -80,6 +82,142 @@ FRAMEWORK_INDICATORS = [
     (".csproj",              ".NET"),
     (".sln",                 ".NET"),
 ]
+
+# Map from npm package name to a marketable tech label.
+# Keys are exact package names (including scope where needed).
+# A package can map to None to explicitly suppress it (noise packages).
+# Evaluated after all deps are collected; labels are deduplicated.
+NPM_PACKAGE_LABELS = {
+    # ── Frameworks & meta-frameworks ──────────────────────────────────────
+    "react":                    "React",
+    "react-dom":                None,           # same as react
+    "react-native":             "React Native",
+    "next":                     "Next.js",
+    "nuxt":                     "Nuxt",
+    "vue":                      "Vue",
+    "@angular/core":            "Angular",
+    "svelte":                   "Svelte",
+    "@sveltejs/kit":            "SvelteKit",
+    "solid-js":                 "Solid.js",
+    "gatsby":                   "Gatsby",
+    "astro":                    "Astro",
+    "remix":                    "Remix",
+    "@remix-run/react":         "Remix",
+    # ── State management ──────────────────────────────────────────────────
+    "redux":                    "Redux",
+    "@reduxjs/toolkit":         "Redux Toolkit",
+    "zustand":                  "Zustand",
+    "mobx":                     "MobX",
+    "recoil":                   "Recoil",
+    "jotai":                    "Jotai",
+    "@tanstack/react-query":    "React Query",
+    "react-query":              "React Query",
+    "swr":                      "SWR",
+    # ── UI libraries ──────────────────────────────────────────────────────
+    "@mui/material":            "Material UI",
+    "@material-ui/core":        "Material UI",
+    "antd":                     "Ant Design",
+    "@chakra-ui/react":         "Chakra UI",
+    "tailwindcss":              "Tailwind CSS",
+    "@radix-ui/react-dialog":   "Radix UI",   # representative package
+    "shadcn-ui":                "shadcn/ui",
+    "styled-components":        "styled-components",
+    "@emotion/react":           "Emotion",
+    "bootstrap":                "Bootstrap",
+    "react-bootstrap":          "Bootstrap",
+    # ── Routing ───────────────────────────────────────────────────────────
+    "react-router":             "React Router",
+    "react-router-dom":         "React Router",
+    "wouter":                   "Wouter",
+    # ── Build tools ───────────────────────────────────────────────────────
+    "vite":                     "Vite",
+    "webpack":                  "Webpack",
+    "esbuild":                  "esbuild",
+    "rollup":                   "Rollup",
+    "parcel":                   "Parcel",
+    "turbo":                    "Turborepo",
+    # ── Backend / server ──────────────────────────────────────────────────
+    "express":                  "Express",
+    "fastify":                  "Fastify",
+    "koa":                      "Koa",
+    "hono":                     "Hono",
+    "nestjs":                   "NestJS",
+    "@nestjs/core":             "NestJS",
+    "hapi":                     "Hapi",
+    "socket.io":                "Socket.IO",
+    "ws":                       None,           # low-level, not marketable alone
+    # ── Databases & ORMs ──────────────────────────────────────────────────
+    "prisma":                   "Prisma",
+    "@prisma/client":           "Prisma",
+    "typeorm":                  "TypeORM",
+    "sequelize":                "Sequelize",
+    "drizzle-orm":              "Drizzle ORM",
+    "mongoose":                 "Mongoose",
+    "pg":                       "PostgreSQL",
+    "mysql2":                   "MySQL",
+    "better-sqlite3":           "SQLite",
+    "redis":                    "Redis",
+    "ioredis":                  "Redis",
+    "@supabase/supabase-js":    "Supabase",
+    "firebase":                 "Firebase",
+    # ── Auth ──────────────────────────────────────────────────────────────
+    "next-auth":                "NextAuth",
+    "@auth/core":               "Auth.js",
+    "passport":                 "Passport.js",
+    "jsonwebtoken":             "JWT",
+    # ── Testing ───────────────────────────────────────────────────────────
+    # (kept because they're genuinely marketable)
+    "jest":                     "Jest",
+    "vitest":                   "Vitest",
+    "@playwright/test":         "Playwright",
+    "cypress":                  "Cypress",
+    "@testing-library/react":   "Testing Library",
+    "mocha":                    "Mocha",
+    "chai":                     None,           # companion to mocha, not standalone
+    # ── GraphQL ───────────────────────────────────────────────────────────
+    "graphql":                  "GraphQL",
+    "@apollo/client":           "Apollo Client",
+    "apollo-server":            "Apollo Server",
+    "@apollo/server":           "Apollo Server",
+    "urql":                     "urql",
+    # ── API / data fetching ───────────────────────────────────────────────
+    "axios":                    "Axios",
+    "trpc":                     "tRPC",
+    "@trpc/server":             "tRPC",
+    "openai":                   "OpenAI SDK",
+    # ── TypeScript tooling ────────────────────────────────────────────────
+    "typescript":               "TypeScript",
+    "zod":                      "Zod",
+    "yup":                      None,           # validation, less prominent
+    # ── Mobile / cross-platform ───────────────────────────────────────────
+    "expo":                     "Expo",
+    "electron":                 "Electron",
+    "tauri":                    "Tauri",
+    # ── Monorepo / tooling ────────────────────────────────────────────────
+    "nx":                       "Nx",
+    "lerna":                    None,           # internal tooling
+    # ── Map common noise to None (suppressed) ─────────────────────────────
+    "eslint":                   None,
+    "prettier":                 None,
+    "husky":                    None,
+    "lint-staged":              None,
+    "rimraf":                   None,
+    "cross-env":                None,
+    "dotenv":                   None,
+    "concurrently":             None,
+    "nodemon":                  None,
+    "ts-node":                  None,
+    "tsup":                     None,
+    "postcss":                  None,
+    "autoprefixer":             None,
+    "classnames":               None,
+    "clsx":                     None,
+    "lodash":                   None,
+    "date-fns":                 None,
+    "dayjs":                    None,
+    "uuid":                     None,
+    "nanoid":                   None,
+}
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +336,51 @@ def fetch_file_paths(name, default_branch, headers):
     return [e["path"] for e in data.get("tree", []) if e.get("type") == "blob"]
 
 
+def fetch_package_json(name, default_branch, headers):
+    """
+    Fetch and decode package.json from the repo root.
+    Returns the parsed dict, or None if not present or unparseable.
+    """
+    data = api_get(
+        f"https://api.github.com/repos/{USERNAME}/{name}/contents/package.json"
+        f"?ref={default_branch}",
+        headers,
+    )
+    if not data or data.get("encoding") != "base64":
+        return None
+    try:
+        content = base64.b64decode(data["content"]).decode("utf-8")
+        return json.loads(content)
+    except Exception as e:
+        print(f"  Warning: could not parse package.json for {name}: {e}")
+        return None
+
+
+def extract_npm_tech(pkg_json):
+    """
+    Given a parsed package.json dict, return a deduplicated list of
+    marketable tech labels derived from dependencies and devDependencies.
+    Unknown packages are silently ignored; suppressed packages (None) are dropped.
+    """
+    if not pkg_json:
+        return []
+    all_deps = {}
+    all_deps.update(pkg_json.get("dependencies") or {})
+    all_deps.update(pkg_json.get("devDependencies") or {})
+
+    seen_labels, result = set(), []
+    for pkg in all_deps:
+        if pkg not in NPM_PACKAGE_LABELS:
+            continue
+        label = NPM_PACKAGE_LABELS[pkg]
+        if label is None or label in seen_labels:
+            continue
+        result.append(label)
+        seen_labels.add(label)
+
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Tech-stack detection
 # ---------------------------------------------------------------------------
@@ -288,7 +471,20 @@ def main():
         print(f"  Files in tree: {len(file_paths)}")
 
         frameworks = detect_frameworks(file_paths)
-        print(f"  Detected frameworks: {frameworks}")
+
+        # If there's a package.json, enrich with marketable npm tech labels.
+        # Merge with file-tree detection, deduplicating by label.
+        basenames = {Path(p).name for p in file_paths}
+        if "package.json" in basenames:
+            pkg_json = fetch_package_json(name, default_branch, headers)
+            npm_tech = extract_npm_tech(pkg_json)
+            existing = set(frameworks)
+            for label in npm_tech:
+                if label not in existing:
+                    frameworks.append(label)
+                    existing.add(label)
+
+        print(f"  Detected tech: {frameworks}")
 
         license_info = base.get("license") or {}
         results.append({
