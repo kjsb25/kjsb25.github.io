@@ -1,0 +1,32 @@
+{{ with .Site.Data.github_repos }}
+<div id="github-repos" class="section">
+    <div class="section__heading">
+        <h2 class="section__title">GitHub Repositories</h2>
+    </div>
+    <div class="section__content">
+        {{ range . }}
+            <div class="education__item">
+                <h3 class="education__title">
+                    <a href="{{ .html_url }}" target="_blank" style="color: inherit; text-decoration: none;">{{ .name }}</a>
+                </h3>
+                {{ if .description }}
+                <div class="education__description">{{ .description }}</div>
+                {{ end }}
+                <div class="experience__badges">
+                    <ul>
+                        {{ if .language }}<li class="experience__badge">{{ .language }}</li>{{ end }}
+                        <li class="experience__badge">
+                            <a href="{{ .html_url }}" target="_blank" style="color: inherit; text-decoration: none;">GitHub</a>
+                        </li>
+                        {{ if .homepage }}
+                        <li class="experience__badge">
+                            <a href="{{ .homepage }}" target="_blank" style="color: inherit; text-decoration: none;">Demo</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
