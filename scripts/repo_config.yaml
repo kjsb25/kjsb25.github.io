@@ -1,4 +1,5 @@
-# Repos to exclude from the auto-generated GitHub Repositories section.
+# Repos to include in the auto-generated GitHub Repositories section.
 # Add repo names (not full URLs) one per line.
-exclude:
-  - kjsb25.github.io
+# Only public, non-fork repos will be shown regardless.
+include:
+  - KTANE-Bomb-Manual
