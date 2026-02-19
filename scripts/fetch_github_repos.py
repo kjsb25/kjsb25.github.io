@@ -433,6 +433,8 @@ def fetch_python_imports(name, default_branch, file_paths, headers):
     """
     Fetch up to MAX_PY_FILES Python files from the repo root (depth-1 .py files)
     and extract top-level import names.  Returns a set of module name strings.
+    Uses raw.githubusercontent.com to avoid contents-API auth issues with
+    cross-repo tokens in GitHub Actions, and to avoid burning API rate limit.
     """
     MAX_PY_FILES = 10
     # Only consider .py files directly in the repo root (no subdir vendor code)
@@ -442,15 +444,11 @@ def fetch_python_imports(name, default_branch, file_paths, headers):
 
     import_names = set()
     for path in root_py:
-        data = api_get(
-            f"https://api.github.com/repos/{USERNAME}/{name}/contents/{path}"
-            f"?ref={default_branch}",
-            headers,
-        )
-        if not data or data.get("encoding") != "base64":
-            continue
+        url = f"https://raw.githubusercontent.com/{USERNAME}/{name}/{default_branch}/{path}"
+        req = urllib.request.Request(url, headers={"User-Agent": f"{USERNAME}-site-builder"})
         try:
-            content = base64.b64decode(data["content"]).decode("utf-8", errors="replace")
+            with urllib.request.urlopen(req) as resp:
+                content = resp.read().decode("utf-8", errors="replace")
         except Exception:
             continue
         for line in content.splitlines():
