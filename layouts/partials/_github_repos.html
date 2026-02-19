@@ -1,4 +1,15 @@
 {{ with .Site.Data.github_repos }}
+<style>
+  .experience__badge--link {
+    background-color: transparent;
+    color: {{ $.Site.Params.colorPrimary }};
+    border: 1.5px solid {{ $.Site.Params.colorPrimary }};
+  }
+  .experience__badge--link a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>
 <div id="github-repos" class="section">
     <div class="section__heading">
         <h2 class="section__title">GitHub Repositories</h2>
@@ -21,25 +32,23 @@
                 {{ end }}
                 <div class="experience__badges">
                     <ul>
-                        {{/* Frameworks detected from file tree */}}
+                        {{/* Tech tags: filled primary pill */}}
                         {{ range .frameworks }}
                         <li class="experience__badge">{{ . }}</li>
                         {{ end }}
-                        {{/* Topics set on the repo */}}
                         {{ range .topics }}
                         <li class="experience__badge">{{ . }}</li>
                         {{ end }}
-                        {{/* License */}}
                         {{ if and .license (ne .license "NOASSERTION") }}
                         <li class="experience__badge">{{ .license }}</li>
                         {{ end }}
-                        {{/* Links */}}
-                        <li class="experience__badge">
-                            <a href="{{ .html_url }}" target="_blank" style="color: inherit; text-decoration: none;">GitHub</a>
+                        {{/* Links: outlined pill */}}
+                        <li class="experience__badge experience__badge--link">
+                            <a href="{{ .html_url }}" target="_blank">GitHub</a>
                         </li>
                         {{ if .homepage }}
-                        <li class="experience__badge">
-                            <a href="{{ .homepage }}" target="_blank" style="color: inherit; text-decoration: none;">Demo</a>
+                        <li class="experience__badge experience__badge--link">
+                            <a href="{{ .homepage }}" target="_blank">Demo</a>
                         </li>
                         {{ end }}
                     </ul>
